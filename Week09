@@ -1,0 +1,43 @@
+라즈베리 파이
+라즈베리 파이에서 개발한 싱글 보드 컴퓨터
+
+목적 : 저렴한 비용으로 컴퓨터를 접하고 프로그래밍을 배울 수 있도록, 즉 컴퓨터 과학 교육을 촉진하기 위해 개발됨
+
+활용 분야 :
+1. 교육            프로그래밍 및 컴퓨터 과학 교육용
+2. IOT 프로젝트    센서와 연동해 스마트 홈 등을 구현
+3. 서버 구축       웹 서버 등 소형 서버로의 활용
+
+라즈베리 파이 OS 설치
+라즈베리 파이는 OS를 microSD 카드에 넣어서 부팅하는 구조
+OS 이미지를 SD 카드에 설치해야 한다.
+관련 프로그램 (Raspberry Pi Imager)
+
+사용할 라즈베리 파이 디바이스, 운영체제(Raspberry Pi OS (32-bit) 가장 일반적), 저장소를 세팅해 SD카드를 굽는다.
+
+부트로더, GPU 초기화, 메모리 설정, OS 로드 순으로 부팅이 진행된다.
+
+GUI 진입 후 초기 세팅 순서
+1. 지역 설정
+2. Wi-Fi 연결       
+3. 비밀번호 설정
+4. 정리 및 재시작
+
+한글 설정 요약
+1. 업데이트
+sudo apt update
+sudo apt update -y
+
+2. 폰트 설치
+sudo apt-get install fonts-unfonts-core -y
+한글 글꼴을 설치해서 웹 브라우저나 GUI에서 한글이 이상하게 나오는 문제를 해결하는 명령어
+
+3. 한글 입력기 설치
+sudo apt-get install ibus ibus-hangul -y
+ibus는 리눅스에서 여러 언어 입력기를 지원하는 프레임워크로 한글 전용 입력기 백엔드를 설치한다.
+
+4. 재부팅
+sudo reboot 설정 반영
+
+설정 완료 후 ibus를 기본 입력기로 잡아줘야 해,
+재부팅 후 Preferences -> ibus preferences에서 input method 탭에 hangul을 추가한다.

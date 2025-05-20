@@ -1,0 +1,38 @@
+InfluxDB : 시계열 데이터베이스
+시간에 따라 변화하는 데이터를 효과적으로 저장하고 관리하는 데 최적화된 데이터베이스
+ex) 온도 센서 값, 주식 가격 변동
+
+InfluxDB Installation 과정
+  라즈베리파이 eth0 down && up
+    sudo ip link set eth0 down && sudo ip link set eth0 up
+    라즈베리파이의 유선랜 인터페이스를 껐다 키는 명령, 즉 네트워크 리셋
+
+  0. 라즈베리파이 업데이트
+    sudo apt update   패키지 목록 최신으로
+    sudo apt upgrade  최신 버전으로
+
+  1. Repository의 GPG Key 더하기
+    wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+    InfluxDB를 만든 회사에서 주는 공식 인증서(GPG Key)
+    보안 차원에서 필요함
+
+  2. Repository 추가
+    echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+    InfluxDB 프로그램이 있는 주소를 apt에 등록해 주는 과정
+
+  3. 프로그램 설치
+    sudo apt update
+    sudo apt install influxdb
+    위 단계에서 추가한 저장소로부터 InfluxDB 패키지 설치
+
+  3.1 프로그램 실행 전 설정
+    sudo systemctl unmask influxdb (unmask : 서비스가 차단(mask)돼 있으면 풀어야 함)
+    sudo systemctl enable influxdb (enable : 부팅할 때 자동으로 켜지게 등록)
+    sudo systemctl start influxdb  (start  : 바로 실행)
+
+  4. 데이터베이스 만들기
+    $ influx
+    입력하면 InfluxDB의 명령어 인터페이스가 열림
+
+    > create database <데이터베이스이름> 새로운 DB 생성
+    > show databases                    만들었는지 확인

@@ -1,0 +1,30 @@
+Grafana Installation (시각화 도구 설치)
+
+  1. GPG Key 추가
+    wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+    Grafana 공식 인증서(GPG Key)를 받아서 등록하는 작업
+
+  2. Repository 추가
+    echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+    apt에게 프로그램을 받을 수 있는 저장소를 알려주는 명령
+    -a 옵션은 기존에 있던 내용에 추가하는 옵션
+
+  3. 프로그램 설치
+    sudo apt update
+    sudo apt install grafana
+    등록한 저장소에 실제로 Grafana를 다운로드해서 설치
+
+  4. 프로그램 실행
+    sudo service grafana-server start
+    Gafana 웹 서버를 백그라운드에서 실행시키는 명령
+    이후 브라우저에서 http://<라즈베리파이_IP>:3000 접속 시 Grafana 대시보드에 접속 가능
+
+  InfluxDB Python 연동
+    sudo pip3 install influxdb
+    Python에서 InfluxDB에 데이터 읽기/쓰기가 가능하도록 해 주는 모듈
+
+  GPIO 핀맵 도구 설치
+    cd /tmp
+    wget https://project-downloads.drogon.net/wiringpi-latest.deb
+    sudo dpkg -i wiringpi-latest.deb
+    라즈베리파이의 GPIO 핀 상태를 확인하거나 핀을 제어할 수 있는 도구

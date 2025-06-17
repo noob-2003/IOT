@@ -1,0 +1,70 @@
+string concat
+  void setup() {
+	  Serial.begin(115200);
+	  Serial.println();
+
+	  int h = 9;
+	  String hStr = String(h);	//9
+
+	  int m = 8;
+	  String mStr = String(m);	//8
+
+	  if(mStr.length() == 1) {
+  		mStr = '0' + mStr;	//08
+  	}
+  	
+  	int s = 35;
+  	String sStr = String(s);	//35
+  
+  	float t = 27.56;
+  	String tStr = String(t,1);	//27.6
+  
+  	String longStr = hStr + ":" + mStr + ":" + sStr + "," + tStr;
+  	Serial.println(longStr);	//9:08:35,27.6
+  }
+-----------------------------------------------------------------
+string substring
+  void setup() {
+  	Serial.begin(115200);
+  	Serial.println();
+  
+  	String longStr = "9:08:35,27.6";
+  
+  	int p1 = longStr.indexOf(":");		//처음부터
+  	int p2 = longStr.indexOf(":",p1+1);	//p1+1부터
+  	int p3 = longStr.indexOf(",");		//처음부터
+
+  	String hStr = longStr.substring(0,p1);		//p1 앞 글자까지
+  	String mStr = longStr.substring(p1+1,p2);	//p2 앞 글자까지
+  	String sStr = longStr.substring(p2+1,p3);	//p3 앞 글자까지
+  	String tStr = longStr.substring(p3+1);		//p3+1 부터 끝까지
+
+  	int h = hStr.toInt();
+  	int m = mStr.toInt();
+  	int s = sStr.toInt();
+  	float t = tStr.toFloat();
+  
+  	Serial.println(h);
+  	Serial.println(m);
+  	Serial.println(s);
+  	Serial.println(t);
+  }
+-----------------------------------------------------------------
+string to array
+  void setup() {
+  	Serial.begin(115200);
+  	Serial.println();
+
+  	String nameStr = "gildong";
+  	char buf1[10];
+  	char buf2[10];
+  	char buf3[10];
+
+  	nameStr.toCharArray(buf1,sizeof(buf1));
+  	strcpy(buf2,buf1)
+  	strcpy(buf3,nameStr.c_str());
+  
+  	Serial.println(buf1);
+  	Serial.println(buf2);
+  	Serial.println(buf3);
+  }
